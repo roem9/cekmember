@@ -5,7 +5,8 @@
                 </div>
                 <?php foreach ($image as $image) :?>
                     <div class="col-12 col-md-4 mb-3">
-                        <img src="<?= base_url()?>assets/img/<?= $image?>" class="img-rounded img-fluid" alt="Cinque Terre">
+                        <?= $image?>
+                        <!-- <img src="<?= base_url()?>assets/<?= $image?>" class="img-rounded img-fluid" alt="Cinque Terre"> -->
                     </div>
                 <?php endforeach;?>
                 <div class="col-12 mb-3">

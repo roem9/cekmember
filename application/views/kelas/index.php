@@ -222,15 +222,15 @@
 
                             html += `<div class="col-12 col-md-4 mb-2">
                                         <ul class="list-group shadow">
-                                            <li class="list-group-item list-group-item-success"><i class="fa fa-book mr-2"></i><strong>`+kelas.nama_kelas+`</strong></li>
-                                            <li class="list-group-item"><i class="fa fa-user-tie mr-2"></i>`+kelas.guru+`</li>
-                                            <li class="list-group-item d-flex justify-content-between">
-                                                <div class="">
-                                                    `+sertifikat+`
-                                                    <a href="#modalDetail" data-toggle="modal" data-id="`+kelas.id_kelas+`" class="btn btn-sm btn-success detail"><i class="fa fa-flag"></i></a>
-                                                </div>
-                                                <a href="<?= base_url()?>`+kelas.link+`" class="btn btn-sm btn-primary"><i class="fa fa-book"></i> <i class="fa fa-angle-right"></i></a>
+                                            <li class="list-group-item list-group-item-success d-flex justify-content-between">
+                                                <span>
+                                                    <i class="fa fa-book mr-2"></i><strong>`+kelas.nama_kelas+`</strong>
+                                                </span>
+                                                <span>
+                                                    <a href="<?= base_url()?>`+kelas.link+`" class="btn btn-sm btn-primary"><i class="fa fa-sign-in-alt"></i></a>
+                                                </span>
                                             </li>
+                                            <li class="list-group-item"><i class="fa fa-user-tie mr-2"></i>`+kelas.guru+`</li>
                                         </ul>
                                     </div>`;
                         });

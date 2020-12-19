@@ -172,11 +172,13 @@
     let a = [];
 
     $("#dataKelas").on("click", "#btnMateri", function(){
+        reload_data("materi");
+
         $("#dataMateri").show();
         $("#dataUjian").hide();
         $("#dataFaq").hide()
 
-        $("#btnMateri").addClass("btn-info")
+        $("#dataKelas > #btnMateri").addClass("btn-info")
         $("#btnMateri").addClass("text-light")
         $("#btnUjian").removeClass("btn-info")
         $("#btnUjian").removeClass("text-light")
@@ -185,6 +187,8 @@
     })
     
     $("#dataKelas").on("click", "#btnUjian", function(){
+        reload_data("ujian");
+
         $("#dataMateri").hide();
         $("#dataUjian").show();
         $("#dataFaq").hide()
@@ -198,6 +202,8 @@
     })
 
     $("#dataKelas").on("click", "#btnFaq", function(){
+        reload_data("faq");
+
         $("#dataMateri").hide();
         $("#dataUjian").hide();
         $("#dataFaq").show()
@@ -294,7 +300,7 @@
     // detail
 
     // function 
-        function reload_data(){
+        function reload_data(btn = "materi"){
             $.ajax({
                 type : "GET",
                 url : "<?= base_url()?>kelas/ajax_one",
@@ -303,24 +309,43 @@
                 success : function(data){
                     let sertifikat = ""
                     if(data.kelas.sertifikat == 1)
-                        sertifikat = `<a href="<?= base_url()?>hifdzi1/syahadah/`+data.kelas.id_sertifikat+`" target="_blank" class="btn btn-sm btn-secondary mr-1"><i class="fa fa-award"></i></a>`;
+                        sertifikat = `<a href="<?= base_url()?>hifdzi1/syahadah/`+data.kelas.id_sertifikat+`" target="_blank" class="btn btn-sm btn-warning text-light mr-1"><i class="fa fa-award"></i></a>`;
                     else 
                         sertifikat = "";
+                    
+                    if(btn == "materi"){
+                        btn = ` <a href="#" class="btn btn-sm btn-info text-light" id="btnMateri">materi</a>
+                                <a href="#" class="btn btn-sm btn-outline-info" id="btnUjian">ujian</a>                      
+                                <a href="#" data-id="`+data.kelas.id_kelas+`" data-toggle="modal" class="btn btn-sm btn-outline-info" id="btnFaq">FAQ</a>`;
+                    } else if(btn == "ujian") {
+                        btn = ` <a href="#" class="btn btn-sm btn-outline-info" id="btnMateri">materi</a>
+                                <a href="#" class="btn btn-sm btn-info text-light" id="btnUjian">ujian</a>                      
+                                <a href="#" data-id="`+data.kelas.id_kelas+`" data-toggle="modal" class="btn btn-sm btn-outline-info" id="btnFaq">FAQ</a>`;
+                    } else if(btn == "faq"){
+                        btn = ` <a href="#" class="btn btn-sm btn-outline-info" id="btnMateri">materi</a>
+                                <a href="#" class="btn btn-sm btn-outline-info" id="btnUjian">ujian</a>                      
+                                <a href="#" data-id="`+data.kelas.id_kelas+`" data-toggle="modal" class="btn btn-sm btn-info text-light" id="btnFaq">FAQ</a>`;
+                    }
 
                     let html = "";
                     html += `<div class="col-12 col-md-4 mb-3">
                                 <ul class="list-group shadow">
-                                    <li class="list-group-item list-group-item-success"><i class="fa fa-book mr-2"></i><strong>`+data.kelas.nama_kelas+`</strong></li>
+                                    <li class="list-group-item list-group-item-success d-flex justify-content-between">
+                                        <span>
+                                            <i class="fa fa-book mr-2"></i><strong>`+data.kelas.nama_kelas+`</strong>
+                                        </span>
+                                        <span>
+                                            <a href="<?= base_url()?>kelas" class="btn btn-sm btn-danger"><i class="fa fa-sign-out-alt"></i></a>
+                                        </span>
+                                    </li>
                                     <li class="list-group-item"><i class="fa fa-user-tie mr-2"></i>`+data.kelas.guru+`</li>
                                     <li class="list-group-item d-flex justify-content-between">
                                         <div class="">
                                             `+sertifikat+`
                                             <a href="#modalDetail" data-toggle="modal" data-id="`+data.kelas.id_kelas+`" class="btn btn-sm btn-success detail mr-1"><i class="fa fa-flag"></i></a>
-                                            <a href="#" data-id="`+data.kelas.id_kelas+`" data-toggle="modal" class="btn btn-sm btn-outline-info" id="btnFaq">FAQ</a>
                                         </div>
                                         <div class="">
-                                            <a href="#" class="btn btn-sm btn-outline-info btn-info text-light" id="btnMateri">materi</a>
-                                            <a href="#" class="btn btn-sm btn-outline-info" id="btnUjian">ujian</a>                      
+                                            `+btn+`
                                         </div>
                                     </li>
                                 </ul>

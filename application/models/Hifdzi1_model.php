@@ -7258,8 +7258,7 @@
         public function materi_pertemuan($id){
             $data[1] = [
                 "0" => "<img src='".base_url()."assets/img/hifdzi_1/1.1.jpeg' class='img-rounded img-fluid'>",
-                "1" => "<audio controls><source src='".base_url()."assets/sound/hifdzi_1/1.1.ogg' type='audio/mpeg'></audio>",  
-                // "1" => "<audio controls><source src='".base_url()."assets/sound/hifdzi_1/1.1.mpeg' type='audio/mpeg'></audio>",  
+                "1" => "<audio controls><source src='".base_url()."assets/sound/hifdzi_1/1.1.mpeg' type='audio/mpeg'></audio>",  
                 "2" => "<img src='".base_url()."assets/img/hifdzi_1/1.2.jpeg' class='img-rounded img-fluid'>",  
                 "3" => "<audio controls><source src='".base_url()."assets/sound/hifdzi_1/1.2.mpeg' type='audio/mpeg'></audio>",  
             ];

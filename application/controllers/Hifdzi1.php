@@ -1097,5 +1097,18 @@ class Hifdzi1 extends CI_CONTROLLER{
             return $data;
         }
     // search 
+
+    // get 
+        public function search_faq(){
+            $search = $this->input->post("search");
+            $data['faq'] = [];
+            if($search != ""){
+                $data['faq'] = $this->Admin_model->get_all_like("faq", "soal", $search, ["program" => "Hifdzi 1"]);
+            } else {
+                $data['faq'] = $this->Admin_model->get_all("faq", ["program" => "Hifdzi 1"]);
+            }
+            echo json_encode($data);
+        }
+    // get 
 }
 ?>

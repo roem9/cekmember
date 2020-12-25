@@ -18,7 +18,7 @@ class Kelas extends CI_CONTROLLER{
         // kelas & program
             // $data['kelas'] = [];
             $data['program'] = [];
-            $kelas = $this->Admin_model->get_all("kelas_user", ["id_user" => $id]);
+            $kelas = $this->Admin_model->get_all("kelas_user", ["id_user" => $id, "id_kelas <>" => NULL]);
             foreach ($kelas as $i => $kelas) {
                 $data['kelas'][$i] = $this->Admin_model->get_one("kelas", ["id_kelas" => $kelas['id_kelas']]);
                 $data['kelas'][$i]['link'] = MD5($data['kelas'][$i]['program']);
@@ -42,7 +42,7 @@ class Kelas extends CI_CONTROLLER{
         $id = $this->session->userdata("id");
         $data['kelas'] = [];
         $data['user'] = $this->Admin_model->get_one("user", ["id_user" => $id]);
-        $kelas = $this->Admin_model->get_all("kelas_user", ["id_user" => $id]);
+        $kelas = $this->Admin_model->get_all("kelas_user", ["id_user" => $id, "id_kelas <>" => NULL]);
         foreach ($kelas as $i => $kelas) {
             $data['kelas'][$i] = $this->Admin_model->get_one("kelas", ["id_kelas" => $kelas['id_kelas']]);
             $data['kelas'][$i]['link'] = strtolower(str_replace(" ", "",$data['kelas'][$i]['program']))."/kelas/".MD5($kelas['id_kelas']);
@@ -191,7 +191,6 @@ class Kelas extends CI_CONTROLLER{
 
         public function get_faq(){
             $id = $this->input->post("id");
-
             $data = $this->Admin_model->get_one("faq", ["id" => $id]);
             echo json_encode($data);
         }
@@ -205,7 +204,8 @@ class Kelas extends CI_CONTROLLER{
                 "pertemuan" => $this->input->post("pertemuan"),
                 "id_user" => $id_user
             ];
-            $this->Admin_model->add_data("presensi_peserta", $data);
+            $cek = $this->Admin_model->get_one("presensi_peserta", $data);
+            if($cek) $this->Admin_model->add_data("presensi_peserta", $data);
             echo json_encode($data['id_kelas']);
         }
     // add 

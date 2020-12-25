@@ -9,6 +9,7 @@
                         <li class="list-group-item list-group-item-info">
                         FAQ
                         </li>
+                        <input type="text" name="search_faq" id="search_faq" class="form-control form-control-lg mt-1 mb-1" placeholder="cari faq ..." autocomplete="off">
                         <div id="list-faq"></div>
                     </ul>
                 </div>
@@ -203,6 +204,7 @@
 
     $("#dataKelas").on("click", "#btnFaq", function(){
         reload_data("faq");
+        $("#search_faq").val("");
 
         $("#dataMateri").hide();
         $("#dataUjian").hide();
@@ -281,6 +283,37 @@
             $("#list-tugas-hafalan").show();
         }
     })
+
+    // search faq
+        $("#search_faq").on("change paste keyup", function() {
+            let search = $(this).val();
+            $.ajax({
+                url: "<?= base_url()?>hifdzi1/search_faq",
+                type: "POST",
+                dataType: "JSON",
+                data: {search: search},
+                success: function(data){
+                    html = "";
+                    if(data.faq.length != 0){
+                        data.faq.forEach(faq => {
+                            html += `<li class="list-group-item d-flex justify-content-between">
+                                        <span>
+                                            `+faq.soal+`
+                                        </span>
+                                        <span>
+                                            <a href="#modalFaq" data-toggle="modal" data-id="`+faq.id+`" class="detailFaq"><i class="fa fa-question-circle text-info"></i></a>
+                                        </span>
+                                    </li>`
+                        });
+                    } else {
+                        html += `<div class="alert alert-warning"><i class="fa fa-exclamation-circle text-warning"></i> faq tidak ada</div>`;
+                    }
+
+                    $("#list-faq").html(html)       
+                }
+            })
+        });
+    // search faq
 
     // detail
         $("#btn-form-1").click(function(){
@@ -430,7 +463,7 @@
                                         `+faq.soal+`
                                     </span>
                                     <span>
-                                        <a href="#modalFaq" data-toggle="modal" data-id="`+faq.id+`" class="btn btn-sm btn-success detailFaq"><i class="fa fa-edit"></i></a>
+                                        <a href="#modalFaq" data-toggle="modal" data-id="`+faq.id+`" class="detailFaq"><i class="fa fa-question-circle text-info"></i></a>
                                     </span>
                                 </li>`
                     });

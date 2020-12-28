@@ -24,7 +24,7 @@
                 "tgl_masuk" => $tgl_masuk,
                 "t4_lahir" => $this->input->post("t4_lahir", TRUE),
                 "email" => $this->input->post("email", TRUE),
-                "username" => $user,
+                "username" => "",
                 "password" => MD5($password),
                 "catatan" => $this->input->post("catatan", TRUE),
             ];

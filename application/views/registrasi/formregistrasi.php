@@ -44,7 +44,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input type="text" name="email" id="email" class="form-control form-control-sm" required>
+                                        <input type="text" name="email" id="email" class="form-control form-control-sm">
                                     </div>
                                     <div class="form-group">
                                         <label for="catatan">Kelas Yang Diambil</label>

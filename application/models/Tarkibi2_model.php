@@ -20,8 +20,8 @@
                 "0" => "<img src='".base_url()."assets/img/tarkibi_2/2.1.jpg' class='img-rounded img-fluid'>",
                 "1" => "<img src='".base_url()."assets/img/tarkibi_2/2.2.jpg' class='img-rounded img-fluid'>",
                 "2" => "<img src='".base_url()."assets/img/tarkibi_2/2.3.jpg' class='img-rounded img-fluid'>",
-                "3" => "<img src='".base_url()."assets/img/tarkibi_2/2.4.jpg' class='img-rounded img-fluid'>",
-                "4" => "<img src='".base_url()."assets/img/tarkibi_2/2.5.jpg' class='img-rounded img-fluid'>",
+                "3" => "<img src='".base_url()."assets/img/tarkibi_2/2.4.jpeg' class='img-rounded img-fluid'>",
+                "4" => "<img src='".base_url()."assets/img/tarkibi_2/2.5.jpeg' class='img-rounded img-fluid'>",
                 "5" => "<audio controls><source src='".base_url()."assets/sound/tarkibi_2/2.1.mpeg' type='audio/mpeg'></audio>", 
             ];
 

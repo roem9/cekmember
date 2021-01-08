@@ -54,6 +54,7 @@
 </head>
 
 <body style="background-color: #265D5A">
+<!-- <body> -->
     
 <div class="wrapper">
     <!-- Sidebar  -->

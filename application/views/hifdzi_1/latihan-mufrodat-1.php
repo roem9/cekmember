@@ -1,4 +1,4 @@
-<div class="container">
+        <div class="container">
             <div class="row">
                 <div class="col-12 col-md-12 mb-3">
                     <a id="backHome" class="btn btn-sm btn-danger text-light"><i class="fa fa-times mr-1"></i>keluar</a>
@@ -121,7 +121,6 @@
                                     </li>
                                 </ul>
                             </div>
-                            
                     <?php 
                             endif;
                         endforeach;?>
@@ -181,7 +180,6 @@
         id = id - 1;
         $(".soal").hide();
         $("#soal"+id).show();
-
     })
 
     $("#ulangi").click(function(){
